@@ -1,0 +1,20 @@
+#root, .root-wrap {
+  height: 100%;
+
+  .aside {
+    width: 200px;
+    display: inline-block;
+    height: 100%;
+  }
+
+  .main-content {
+    vertical-align: top;
+    display: inline-block;
+    width: calc(~"100% - 200px");
+  }
+
+  .app-wrap + div {
+    border: 2px solid #eee;
+    margin-top: 20px;
+  }
+}

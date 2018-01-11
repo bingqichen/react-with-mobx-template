@@ -11,7 +11,8 @@ import AppStore from './stores/AppStore';
 useStrict(true);
 
 const stores = {
-  appStore: new AppStore()
+  // appStore: new AppStore({ list: [1] }) // 塞入初始数据，可用于服务端渲染
+  appStore: new AppStore({})
 };
 
 render(<Provider {...stores}>{ router }</Provider>, document.getElementById('root'));

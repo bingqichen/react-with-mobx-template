@@ -3,6 +3,10 @@ import { observable, action, runInAction } from 'mobx';
 import * as appApis from '../services/app';
 
 export default class AppStore {
+  constructor({ list = [] }) {
+    this.list = list;
+  }
+
   @observable show = true;
   @observable list = [];
 

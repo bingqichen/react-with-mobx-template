@@ -45,7 +45,7 @@ yarn:
 
 ## 其他
 - 启用`editorconfig`来让编辑器自动读取格式化文件；启用`eslint`；
-- 使用`happypack`加速打包.
+- 使用`happypack`加速打包。
 
 ## 关于项目的一些配置项
 - `webpack`的配置：

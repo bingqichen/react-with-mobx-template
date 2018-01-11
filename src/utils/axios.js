@@ -23,8 +23,7 @@ axios.interceptors.response.use((res) => {
   //   console.error(res.data);
   //   return { errcode: 'response error' };
   // }
-  // return res.data;
-  return res;
+  return res.data;
 }, (err) => {
   console.error(err);
   return { errcode: 'response error' };

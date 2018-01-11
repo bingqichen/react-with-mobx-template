@@ -12,7 +12,7 @@ import './style.less';
 @observer
 export default class App extends Component {
   render() {
-    const { show, changeShow } = this.props.appStore;
+    const { show, list, changeShow, getData } = this.props.appStore;
 
     return (
       <div className="app-wrap">
@@ -25,6 +25,12 @@ export default class App extends Component {
         hello mobx!
         <br />
         <Button onClick={changeShow}>点击{ show ? '隐藏' : '显示' }图像</Button>
+        <Button onClick={() => { getData({}); }}>获取cnode数据</Button>
+        <div className="list">
+          {
+            list.length ? `已完成数据请求，获得了${list.length}条数据。` : '无数据'
+          }
+        </div>
       </div>
     );
   }

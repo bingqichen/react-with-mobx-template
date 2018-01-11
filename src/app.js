@@ -8,10 +8,10 @@ import router from './router';
 
 import AppStore from './stores/AppStore';
 
+useStrict(true);
+
 const stores = {
   appStore: new AppStore()
 };
-
-useStrict(true);
 
 render(<Provider {...stores}>{ router }</Provider>, document.getElementById('root'));

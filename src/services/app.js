@@ -1,9 +1,9 @@
 import { axios } from '../utils';
 
-export const getPage = () => (axios.get('/topics', {
+export const getTopicsList = ({ page = 1, tab = 'all', limit = 10 }) => (axios.get('/topics', {
   params: {
-    limit: 20,
-    tab: 'all',
-    page: 1
+    page,
+    tab,
+    limit,
   }
 }));

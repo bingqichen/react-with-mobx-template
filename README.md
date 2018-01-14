@@ -3,7 +3,7 @@
 
 ## 技术选型
 - [react](https://github.com/facebook/react)
-- [react-router@4](https://github.com/ReactTraining/react-router)
+- [react-router@v4](https://github.com/ReactTraining/react-router)
 - [mobx](http://cn.mobx.js.org/)
 - [ant design](https://ant.design/index-cn)
 - [axios](https://github.com/axios/axios)

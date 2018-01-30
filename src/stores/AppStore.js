@@ -3,12 +3,12 @@ import { observable, action, runInAction } from 'mobx';
 import * as appApis from '../services/app';
 
 export default class AppStore {
+  @observable show = true;
+  @observable list = [];
+
   constructor({ list = [] }) {
     this.list = list;
   }
-
-  @observable show = true;
-  @observable list = [];
 
   @action changeShow = () => { this.show = !this.show; }
   @action getData = async (params) => {

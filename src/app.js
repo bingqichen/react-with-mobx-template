@@ -1,14 +1,14 @@
 import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
-import { useStrict } from 'mobx';
+import { configure } from 'mobx';
 import { Provider } from 'mobx-react';
 
 import router from './router';
 
 import AppStore from './stores/AppStore';
 
-useStrict(true);
+configure({ enforceActions: true });
 
 const stores = {
   // appStore: new AppStore({ list: [1] }) // 塞入初始数据，可用于服务端渲染

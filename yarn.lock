@@ -239,7 +239,7 @@ ansi-styles@^3.2.1:
   dependencies:
     color-convert "^1.9.0"
 
-antd@^3.3.1:
+antd@^3.3.3:
   version "3.3.3"
   resolved "http://registry.npm.taobao.org/antd/download/antd-3.3.3.tgz#048a6550dffb355443d169226be05593c638e0cc"
   dependencies:
@@ -4568,9 +4568,13 @@ mobx@^4.1.0:
   version "4.1.0"
   resolved "http://registry.npm.taobao.org/mobx/download/mobx-4.1.0.tgz#e4a9679cdafbe215b20e32ef93a7031845b3f1af"
 
-moment@2.x, moment@^2.19.3, moment@^2.20.1:
+moment@2.x, moment@^2.19.3:
   version "2.20.1"
   resolved "http://registry.npm.taobao.org/moment/download/moment-2.20.1.tgz#d6eb1a46cbcc14a2b2f9434112c1ff8907f313fd"
+
+moment@^2.21.0:
+  version "2.21.0"
+  resolved "http://registry.npm.taobao.org/moment/download/moment-2.21.0.tgz#2a114b51d2a6ec9e6d83cf803f838a878d8a023a"
 
 most@^1.6.1:
   version "1.7.2"

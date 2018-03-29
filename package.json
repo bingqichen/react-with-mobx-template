@@ -12,7 +12,7 @@
   "author": "BingqiChen",
   "license": "MIT",
   "dependencies": {
-    "antd": "^3.3.1",
+    "antd": "^3.3.3",
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
@@ -20,7 +20,7 @@
     "history": "^4.7.2",
     "mobx": "^4.1.0",
     "mobx-react": "^5.0.0",
-    "moment": "^2.20.1",
+    "moment": "^2.21.0",
     "qs": "^6.5.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

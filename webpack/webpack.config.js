@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const HappyPack = require('happypack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const { theme } = require(path.join(__dirname, '../package.json'));
 
@@ -11,21 +10,29 @@ module.exports = () => {
       rules: [
         {
           test: /\.css$/,
-          loader: ExtractTextPlugin.extract({
-            fallback: 'style-loader',
-            use: ['happypack/loader?id=css']
-          })
+          use: [
+            MiniCssExtractPlugin.loader,
+            'css-loader?importLoaders=1',
+            'postcss-loader'
+          ]
         },
         {
           test: /\.less$/,
-          loader: ExtractTextPlugin.extract({
-            fallback: 'style-loader',
-            use: ['happypack/loader?id=less']
-          })
+          use: [
+            MiniCssExtractPlugin.loader,
+            'css-loader?importLoaders=1',
+            'postcss-loader',
+            {
+              loader: 'less-loader',
+              options: {
+                modifyVars: theme
+              }
+            }
+          ]
         },
         {
           test: /\.js[x]?$/,
-          use: ['happypack/loader?id=jsx'],
+          use: 'babel-loader',
           exclude: /node_modules/
         },
         {
@@ -39,40 +46,9 @@ module.exports = () => {
       ]
     },
     plugins: [
-      new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-      }),
       new webpack.DllReferencePlugin({
         context: __dirname,
         manifest: require(path.join(__dirname, '../dist/vendor/manifest.json'))
-      }),
-      new webpack.optimize.ModuleConcatenationPlugin(),
-      new HappyPack({
-        id: 'jsx',
-        threads: 4,
-        loaders: ['babel-loader']
-      }),
-      new HappyPack({
-        id: 'css',
-        threads: 4,
-        loaders: [
-          'css-loader?importLoaders=1',
-          'postcss-loader'
-        ]
-      }),
-      new HappyPack({
-        id: 'less',
-        threads: 4,
-        loaders: [
-          'css-loader?importLoaders=1',
-          'postcss-loader',
-          {
-            loader: 'less-loader',
-            options: {
-              modifyVars: theme
-            }
-          }
-        ]
       })
     ],
     resolve: {
@@ -81,14 +57,24 @@ module.exports = () => {
   };
 
   if (process.env.NODE_ENV === 'development') {
-    config.module.rules[0].loader = ['css-hot-loader'].concat(ExtractTextPlugin.extract({
-      fallback: 'style-loader',
-      use: ['happypack/loader?id=css']
-    }));
-    config.module.rules[1].loader = ['css-hot-loader'].concat(ExtractTextPlugin.extract({
-      fallback: 'style-loader',
-      use: ['happypack/loader?id=less']
-    }));
+    config.module.rules[0].use = [
+      'css-hot-loader',
+      MiniCssExtractPlugin.loader,
+      'css-loader?importLoaders=1',
+      'postcss-loader'
+    ];
+    config.module.rules[1].use = [
+      'css-hot-loader',
+      MiniCssExtractPlugin.loader,
+      'css-loader?importLoaders=1',
+      'postcss-loader',
+      {
+        loader: 'less-loader',
+        options: {
+          modifyVars: theme
+        }
+      }
+    ];
   }
 
   return config;

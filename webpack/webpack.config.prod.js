@@ -1,12 +1,14 @@
 const path = require('path');
-const webpack = require('webpack');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+// const webpack = require('webpack');
 const merge = require('webpack-merge');
-
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const webpackBaseConfig = require('./webpack.config')();
 
 module.exports = merge(webpackBaseConfig, {
+  mode: 'production',
   entry: {
     app: path.join(__dirname, '../src/app')
   },
@@ -15,23 +17,30 @@ module.exports = merge(webpackBaseConfig, {
     filename: 'js/[name].js',
     publicPath: process.env.BETA === 'true' ? '//your_cdn_path/beta/project_name/' : '//your_cdn_path/release/project_name/'
   },
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        uglifyOptions: {
+          compress: {
+            warnings: false,
+            drop_debugger: true,
+            drop_console: false
+          }
+        }
+      }),
+      new OptimizeCSSAssetsPlugin({})
+    ]
+  },
   plugins: [
-    new ExtractTextPlugin({
-      filename: 'css/[name].css',
-      disable: false,
-      allChunks: true
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].css'
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-        drop_debugger: true,
-        drop_console: false
-      }
-    }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true,
-      debug: false
-    }),
+    // new webpack.LoaderOptionsPlugin({
+    //   minimize: true,
+    //   debug: false
+    // }),
     new CleanWebpackPlugin(['dist/css', 'dist/js'], { root: path.resolve() })
   ]
 });

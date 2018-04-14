@@ -3,15 +3,13 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const Dashboard = require('webpack-dashboard');
 const DashboardPlugin = require('webpack-dashboard/plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const WebpackBrowserPlugin = require('webpack-browser-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpackBaseConfig = require('./webpack.config')();
 
 const dashboard = new Dashboard();
 
-const webpackBaseConfig = require('./webpack.config')();
-
 module.exports = merge(webpackBaseConfig, {
-  devtool: 'eval',
+  mode: 'development',
   entry: {
     app: [
       'react-hot-loader/patch',
@@ -49,6 +47,8 @@ module.exports = merge(webpackBaseConfig, {
     historyApiFallback: true,
     port: 8888,
     host: 'localhost',
+    open: true,
+    openPage: '',
     proxy: {
 
     },
@@ -57,15 +57,8 @@ module.exports = merge(webpackBaseConfig, {
   plugins: [
     new DashboardPlugin(dashboard.setData),
     new webpack.HotModuleReplacementPlugin(),
-    new WebpackBrowserPlugin({
-      port: 8888,
-      url: 'http://localhost',
-      browser: 'Chrome'
-    }),
-    new ExtractTextPlugin({
-      filename: 'css/[name].css',
-      disable: false,
-      allChunks: true
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].css'
     })
   ]
 });

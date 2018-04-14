@@ -230,7 +230,7 @@ ansi-styles@~1.0.0:
   version "1.0.0"
   resolved "http://registry.npm.taobao.org/ansi-styles/download/ansi-styles-1.0.0.tgz#cb102df1c56f5123eab8b67cd7b98027a0279178"
 
-antd@^3.3.4:
+antd@^3.4.1:
   version "3.4.1"
   resolved "http://registry.npm.taobao.org/antd/download/antd-3.4.1.tgz#9f93c712e14d692a3db70fa3f254c79874cd3822"
   dependencies:
@@ -7936,6 +7936,10 @@ webpack-sources@^1.0.1, webpack-sources@^1.1.0:
   dependencies:
     source-list-map "^2.0.0"
     source-map "~0.6.1"
+
+webpack-version-plugin@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/webpack-version-plugin/-/webpack-version-plugin-2.0.0.tgz#900ffd66ab8eee58c9a7babb93897f0e7e0b8696"
 
 webpack@^4.5.0:
   version "4.5.0"

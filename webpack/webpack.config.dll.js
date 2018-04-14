@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const WebpackVersionPlugin = require('webpack-version-plugin');
 
 module.exports = {
   mode: 'production',
@@ -18,6 +19,11 @@ module.exports = {
       name: '[name]',
       context: __dirname
     }),
-    new CleanWebpackPlugin(['dist/vendor'], { root: path.resolve() })
+    new CleanWebpackPlugin(['dist/vendor'], { root: path.resolve() }),
+    new WebpackVersionPlugin({
+      cb: (hashMap) => {
+        console.log(hashMap);
+      }
+    })
   ]
 };

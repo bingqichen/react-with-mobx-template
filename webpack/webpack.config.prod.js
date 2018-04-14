@@ -5,6 +5,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const WebpackVersionPlugin = require('webpack-version-plugin');
 const webpackBaseConfig = require('./webpack.config')();
 
 module.exports = merge(webpackBaseConfig, {
@@ -41,6 +42,11 @@ module.exports = merge(webpackBaseConfig, {
     //   minimize: true,
     //   debug: false
     // }),
-    new CleanWebpackPlugin(['dist/css', 'dist/js'], { root: path.resolve() })
+    new CleanWebpackPlugin(['dist/css', 'dist/js'], { root: path.resolve() }),
+    new WebpackVersionPlugin({
+      cb: (hashMap) => {
+        console.log(hashMap);
+      }
+    })
   ]
 });

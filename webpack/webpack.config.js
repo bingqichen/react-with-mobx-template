@@ -1,8 +1,8 @@
-const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const { theme } = require(path.join(__dirname, '../package.json'));
+const { theme } = require('../package.json');
+const manifest = require('../dist/vendor/manifest.json');
 
 module.exports = () => {
   const config = {
@@ -48,7 +48,7 @@ module.exports = () => {
     plugins: [
       new webpack.DllReferencePlugin({
         context: __dirname,
-        manifest: require(path.join(__dirname, '../dist/vendor/manifest.json'))
+        manifest
       })
     ],
     resolve: {

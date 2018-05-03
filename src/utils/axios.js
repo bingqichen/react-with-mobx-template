@@ -6,12 +6,9 @@ import { message } from 'antd';
 import { requestBaseUrl } from '../config';
 
 axios.defaults.baseURL = requestBaseUrl;
+axios.defaults.withCredentials = true;
 axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest';
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-axios.interceptors.request.use(config => ({
-  ...config,
-  // withCredentials: true
-}));
 axios.interceptors.response.use((res) => {
   // if (res.data.errcode) {
   //   if (res.data.errcode !== 401) {

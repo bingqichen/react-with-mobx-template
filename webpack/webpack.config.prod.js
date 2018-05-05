@@ -6,6 +6,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const WebpackVersionPlugin = require('webpack-version-plugin');
+
 const webpackBaseConfig = require('./webpack.config')();
 
 module.exports = merge(webpackBaseConfig, {

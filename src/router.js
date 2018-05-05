@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import createBrowserHistory from 'history/createBrowserHistory';
 import { Menu } from 'antd';
 
 import App from './containers/App';
@@ -9,10 +8,8 @@ import OtherItem from './containers/OtherItem';
 
 import './style.less';
 
-const history = createBrowserHistory();
-
 export default (
-  <Router history={history}>
+  <Router>
     <div className="root-wrap">
 
       {/* 菜单栏 */}

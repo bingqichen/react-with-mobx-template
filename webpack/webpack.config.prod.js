@@ -1,5 +1,5 @@
 const path = require('path');
-// const webpack = require('webpack');
+const webpack = require('webpack');
 const merge = require('webpack-merge');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
@@ -35,6 +35,9 @@ module.exports = merge(webpackBaseConfig, {
     ]
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.BETA': JSON.stringify(process.env.BETA)
+    }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].css'
     }),

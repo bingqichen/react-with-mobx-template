@@ -36,9 +36,10 @@ export default (
 
         {/* 路由 */}
         <Switch>
-          <Route exact path="/" render={() => (<div>这里会显示各个路由的内容</div>)} />
+          <Route path="/" render={() => (<div>这里会显示各个路由的内容</div>)} />
           <Route path="/id" component={Item} />
           <Route path="/otherid" component={OtherItem} />
+          <Route path="*" render={() => (<div>这里会显示各个路由的内容</div>)} />
         </Switch>
       </div>
     </div>
